@@ -11,8 +11,7 @@ const page = () => {
       <article>
         <Link href={'/'}>Home</Link>
         <Link href={'/about'}>About</Link>
-        <Link href={'/login'}>Login</Link>
-        {/* <LogoutBtn/> */}
+        <LogoutBtn/>
       </article>
     </div>
   )
