@@ -1,7 +1,7 @@
 import "../styles/app.scss";
 import { Inter } from "next/font/google";
-import {Header} from "../components/Server/ServerCOmponents";
 import { ContextProvider } from "@/components/Client/Button/button";
+import { Header} from "../components/Server/ServerComponents";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ContextProvider>
           <>
-            <Header />
+            <Header/>
             {children}
           </>
         </ContextProvider>
