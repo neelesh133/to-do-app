@@ -6,7 +6,9 @@ export default function Home() {
     <div className="container">
       <Form />
       <section className="todosContainer">
-        <TodoItem title={"Sample"} description={"Sample description 1234"} />
+        <TodoItem title={"Sample"} description={"Sample description 1234"} 
+        id={"sampleid"}
+        completed={true}/>
       </section>
     </div>
   );
