@@ -1,13 +1,20 @@
+import { User } from "@/models/user";
 import { connectDB } from "../../../utils/features";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
   try {
     await connectDB();
-    return new NextResponse("Connected Successfully",{status:200})
-  } catch { 
-    return new NextResponse(" NOT Connected Successfully",{status:500})}
-  //   return new Response("kelee;",{
-  //     status: 200
-  //   })
+
+    const ussss = await User.create({
+        name: "sjnaid",
+        email: "dafsaxfsad",
+        password: "asdnaidw"
+    })
+
+    return NextResponse.json(ussss)
+    
+  } 
+  catch(error) { 
+    return NextResponse(error,{status:500})}
 };

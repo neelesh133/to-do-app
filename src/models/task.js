@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { User } from "./user";
 
 const schema = new mongoose.Schema({
     title:{
@@ -16,7 +17,7 @@ const schema = new mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         required:true,
-        ref:"User",
+        ref: User,
     },
     createdAt: {
         type: Date,
