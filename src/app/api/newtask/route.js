@@ -1,4 +1,4 @@
-import { connectDB } from "../../../../utils/features";
+import { connectDB } from "../../../utils/features";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
