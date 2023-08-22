@@ -11,7 +11,7 @@ const schema = new mongoose.Schema({
         required: true
     },
     isCompleted:{
-        type: boolean,
+        type: Boolean,
         default: false,
     },
     user:{
