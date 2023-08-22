@@ -32,7 +32,7 @@ export const POST = async (request) => {
 
     return NextResponse.json({
       success: "true",
-      message: "Login Successfully",
+      message: `Welcome Back ${user.name}`,
     },{status:200});
   } catch (error) {
     return new NextResponse(error, { status: 500 });
