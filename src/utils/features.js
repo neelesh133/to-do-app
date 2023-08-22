@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { serialize } from "cookie";
 var jwt = require("jsonwebtoken");
 import { cookies } from "next/headers";
 

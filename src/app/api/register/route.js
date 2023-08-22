@@ -1,6 +1,7 @@
 import { User } from "@/models/user";
 import { NextResponse } from "next/server";
 import { connectDB, cookieSetter, generateToken } from "@/utils/features";
+import bcrypt from 'bcrypt'
 
 export const POST = async (request) => {
   try {
@@ -19,14 +20,15 @@ export const POST = async (request) => {
       return new NextResponse("Already Registered", { status: 400 });
     }
 
+    const hashedPassword = await bcrypt.hash(password,10)
+
     user = await User.create({
       name,
       email,
-      password,
+      password: hashedPassword,
     });
 
     const token = generateToken(user._id);
-    console.log(token);
 
     cookieSetter(NextResponse, token, true);
 
@@ -34,7 +36,7 @@ export const POST = async (request) => {
       success: "true",
       message: "User Registered",
       user,
-    });
+    },{status:201});
   } catch (error) {
     return new NextResponse(error, { status: 500 });
   }
