@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, createContext, useContext } from "react";
 
-const Context = createContext({ user: {} });
+export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
@@ -30,17 +30,21 @@ export const LogoutBtn = () => {
   );
 };
 
-
-export const TodoButtton = (id,completed) => {
-    const deleteHandler = (id) =>{
-        alert(`Deleteing, ${id}`)
-     };
+export const TodoButtton = (id, completed) => {
+  const deleteHandler = (id) => {
+    alert(`Deleteing, ${id}`);
+  };
   return (
     <>
-    <input type="checkbox" checked={completed} />
-    <button className="btn" onClick={()=>{deleteHandler(id)}}>Delete</button>
+      <input type="checkbox" checked={completed} />
+      <button
+        className="btn"
+        onClick={() => {
+          deleteHandler(id);
+        }}
+      >
+        Delete
+      </button>
     </>
   );
 };
-
-

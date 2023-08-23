@@ -33,6 +33,7 @@ export const POST = async (request) => {
     return NextResponse.json({
       success: "true",
       message: `Welcome Back ${user.name}`,
+      user
     },{status:200});
   } catch (error) {
     return new NextResponse(error, { status: 500 });
