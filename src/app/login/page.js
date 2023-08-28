@@ -11,7 +11,7 @@ const login = () => {
   const router = useRouter()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, setUser } = useContext(Context);
+  const {setUser } = useContext(Context);
   var userDupl = {};
   const loginHandler = async (e) => {
     e.preventDefault();

@@ -17,13 +17,13 @@ export const POST = async (request) => {
     let user = await User.findOne({ email }).select("+password");
 
     if (!user) {
-      return NextResponse.json({success: "false",message: "Wrong Credentials",user: {}}, { status: 400 });
+      return NextResponse.json({success: "false",message: "Wrong Credentials"}, { status: 400 });
     }
 
     const isMatch = await bcrypt.compare(password, user.password)
 
     if (!isMatch) {
-      return NextResponse.json({success: "false",message: "Wrong Credentials",user: {}}, { status: 400 });
+      return NextResponse.json({success: "false",message: "Wrong Credentials"}, { status: 400 });
       }
 
     const token = generateToken(user._id);
