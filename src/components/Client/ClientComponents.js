@@ -25,7 +25,7 @@ export const LogoutBtn = () => {
     try {
       const res = await fetch("/api/logout");
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       if(data.success === 'false'){
       return toast.error(data.message);
       }

@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 import { toast } from "react-hot-toast";
 
 const login = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const {setUser } = useContext(Context);
@@ -28,7 +28,7 @@ const login = () => {
       });
       const data = await res.json();
       if(data.success === 'true'){
-        console.log(data.success);
+        // console.log(data.success);
       setUser(data.user);
       userDupl = data.user
       toast.success(data.message)

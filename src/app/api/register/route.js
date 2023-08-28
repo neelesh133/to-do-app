@@ -11,13 +11,19 @@ export const POST = async (request) => {
     const { name, email, password } = reqData;
 
     if (!name || !email || !password) {
-      return new NextResponse("Please Enter all fields", { status: 400 });
+      return NextResponse.json({
+        success: "false",
+        message: "Enter all fields",
+      },{status:400});
     }
 
     let user = await User.findOne({ email });
 
     if (user) {
-      return new NextResponse("Already Registered", { status: 400 });
+      return NextResponse.json({
+        success: "false",
+        message: "User with same email already exists",
+      },{status:400});
     }
 
     const hashedPassword = await bcrypt.hash(password,10)
