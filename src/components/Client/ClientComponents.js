@@ -2,13 +2,15 @@
 import Link from "next/link";
 import { useState, createContext, useContext } from "react";
 
-export const Context = createContext();
+export const Context = createContext({user: {}});
 
 export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   return (
-    <Context.Provider value={{ user, setUser }}>{children}</Context.Provider>
+    <Context.Provider value={{ user, setUser }}>
+      {children}
+    </Context.Provider>
   );
 };
 
@@ -17,9 +19,11 @@ export const LogoutBtn = () => {
     alert("Logged Out");
   };
   const { user } = useContext(Context);
+  var length = (Object.entries(user).length);
+  console.log(length);
   return (
     <>
-      {!user.id ? (
+      {(length === 0) ? (
         <Link href={"/login"}>Login</Link>
       ) : (
         <button className="btn" onClick={logoutHandler}>

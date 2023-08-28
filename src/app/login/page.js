@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useContext } from "react";
 import { useRouter } from 'next/navigation'
+import { toast } from "react-hot-toast";
 
 const login = () => {
   const router = useRouter()
@@ -26,11 +27,19 @@ const login = () => {
         },
       });
       const data = await res.json();
-      if(data.success){
+      if(data.success === 'true'){
+        console.log(data.success);
       setUser(data.user);
       userDupl = data.user
+      toast.success(data.message)
     }
-    } catch (error) {}
+    else{
+      toast.error("Invalid email or password")
+    }
+  }
+    catch (error) {
+    return toast.error("Invalid email or password")
+     }
 
     if(userDupl._id){
       router.push('/')
